@@ -120,9 +120,11 @@ Untitled*
 untitled*
 *debuglog*
 .DS_Store
-*/version.py
 */cython_version.py
 .mypy_cache
 
 # Documentation files
 auto_examples
+
+# Version file
+plasmapy/version.py

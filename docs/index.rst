@@ -6,10 +6,53 @@
 PlasmaPy Documentation
 ######################
 
+.. raw:: html
+
+    <div style="width: 30%;" class="sphx-glr-thumbcontainer" tooltip="Let&#x27;s try to look at ITER plasma conditions using the physics subpackage. ">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_physics_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_physics.py`
+
+.. raw:: html
+
+    </div> 
+
+.. raw:: html
+
+    <div style="width: 30%;" class="sphx-glr-thumbcontainer" tooltip="Let&#x27;s import some basics (and PlasmaPy!) ">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_dispersion_function_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_dispersion_function.py`
+
+.. raw:: html
+
+    </div>
+
+.. raw:: html
+
+    <div style="width: 30%;" class="sphx-glr-thumbcontainer" tooltip="Let&#x27;s analyze a few Langmuir probe characteristics using the diagnostics.langmuir subpackage. F...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_langmuir_analysis_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_langmuir_analysis.py`
+
+.. raw:: html
+
+    </div> 
+
 .. image:: _static/graphic-circular.png
    :alt: PlasmaPy logo
    :align: right
    :scale: 80%
+
 
 `PlasmaPy <http://www.plasmapy.org/>`_ is an open source
 community-developed core `Python <https://www.python.org/>`_ 3.6+
@@ -44,15 +87,16 @@ User Documentation
 
 .. _toplevel-plasma-parameters:
 
-Theoretical Analysis
---------------------
+Formulary
+---------
+
+The `~plasmapy.formulary` subpackage aims to cover the `NRL Plasma Physics
+Formulary <https://www.nrl.navy.mil/ppd/content/nrl-plasma-formulary>`_.
 
 .. toctree::
    :maxdepth: 1
 
-   physics/index
-   transport/index
-   mathematics/index
+   formulary/index
 
 .. _toplevel-experimental-tools:
 
@@ -76,18 +120,17 @@ Data Structures and Simulation
     :maxdepth: 1
 
     plasma/index
-    species/index
+    simulation/particletracker
 
-.. _toplevel-physical-data:
+.. _toplevel-particle-data:
 
-Physical Data
+Particle Data
 -------------
 
 .. toctree::
     :maxdepth: 1
 
-    constants/index
-    atomic/index
+    particles/index
 
 .. _toplevel-utilities:
 
