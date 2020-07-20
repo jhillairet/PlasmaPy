@@ -4,12 +4,12 @@
 Plasma diagnostics (`plasmapy.diagnostics`)
 *******************************************
 
-.. currentmodule:: plasmapy.diagnostics.langmuir
+.. automodapi:: plasmapy.diagnostics
+    :no-heading:
 
-.. automodapi:: plasmapy.diagnostics.langmuir
-   :no-heading:
+.. toctree::
+   :maxdepth: 1
+   :caption: Sub-Packages and Modules
 
-.. topic:: Examples:
-
-   * :ref:`sphx_glr_auto_examples_plot_langmuir_analysis.py`
-
+   langmuir
+   thomson
