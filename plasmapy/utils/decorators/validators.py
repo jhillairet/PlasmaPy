@@ -3,16 +3,15 @@ Various decorators to validate input/output arguments to functions.
 """
 __all__ = ["validate_quantities", "ValidateQuantities"]
 
+import astropy.units as u
 import functools
 import inspect
 import warnings
-from typing import Any, Dict
 
-from astropy import units as u
+from typing import Any, Dict
 
 from plasmapy.utils.decorators.checks import CheckUnits, CheckValues
 from plasmapy.utils.decorators.helpers import preserve_signature
-from plasmapy.utils.exceptions import ImplicitUnitConversionWarning
 
 
 class ValidateQuantities(CheckUnits, CheckValues):
@@ -58,6 +57,7 @@ class ValidateQuantities(CheckUnits, CheckValues):
         can_be_inf             `bool`  [DEFAULT `True`] values can be :data:`~numpy.inf`
         can_be_nan             `bool`  [DEFAULT `True`] values can be :data:`~numpy.nan`
         none_shall_pass        `bool`  [DEFAULT `False`] values can be a python `None`
+        can_be_zero            `bool`  [DEFAULT `True`] values can be zero
         ====================== ======= ================================================
 
     Notes
@@ -149,9 +149,9 @@ class ValidateQuantities(CheckUnits, CheckValues):
 
         if "checks_on_return" in validations:
             raise TypeError(
-                f"keyword argument 'checks_on_return' is not allowed, "
-                f"use 'validations_on_return' to set validations "
-                f"on the return variable"
+                "keyword argument 'checks_on_return' is not allowed, "
+                "use 'validations_on_return' to set validations "
+                "on the return variable"
             )
 
         self._validations = validations
@@ -316,7 +316,7 @@ class ValidateQuantities(CheckUnits, CheckValues):
 
         # initialize str for error message
         if arg_name == "checks_on_return":
-            err_msg = f"The return value  "
+            err_msg = "The return value  "
         else:
             err_msg = f"The argument '{arg_name}' "
         err_msg += f"to function {self.f.__name__}()"
@@ -330,8 +330,8 @@ class ValidateQuantities(CheckUnits, CheckValues):
             typeerror_msg += f"{unit}"
 
             if ii != len(arg_validations["units"]) - 1:
-                typeerror_msg += f", "
-        typeerror_msg += f"]"
+                typeerror_msg += ", "
+        typeerror_msg += "]"
 
         # add units to arg if possible
         # * a None value will be taken care of by `_check_unit_core`
@@ -365,15 +365,6 @@ class ValidateQuantities(CheckUnits, CheckValues):
             and unit is not None
             and not arg_validations["pass_equivalent_units"]
         ):
-
-            if not arg.unit.is_equivalent(unit, equivalencies=None):
-                # non-standard conversion
-                warnings.warn(
-                    ImplicitUnitConversionWarning(
-                        f"{err_msg} has a non-standard unit conversion..."
-                        f"converting {arg.unit} to {unit}"
-                    )
-                )
 
             arg = arg.to(unit, equivalencies=equiv)
         elif err is not None:
@@ -439,6 +430,7 @@ def validate_quantities(func=None, validations_on_return=None, **validations):
         can_be_inf             `bool`  [DEFAULT `True`] values can be :data:`~numpy.inf`
         can_be_nan             `bool`  [DEFAULT `True`] values can be :data:`~numpy.nan`
         none_shall_pass        `bool`  [DEFAULT `False`] values can be a python `None`
+        can_be_zero            `bool`  [DEFAULT `True`] values can be zero
         ====================== ======= ================================================
 
     Notes

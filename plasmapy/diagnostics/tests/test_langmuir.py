@@ -1,9 +1,9 @@
-# coding=utf-8
 """Tests for Langmuir probe analysis functions."""
 
 import astropy.constants.si as const
 import numpy as np
 import pytest
+
 from astropy import units as u
 
 from plasmapy.diagnostics import langmuir
@@ -52,7 +52,7 @@ class Test__fitting_functions:
 
     def test_fit_func_double_lin_inverse(self):
         r"""Test double linear fitting function with inverse slope and an offset
-            for use in fitting a bi-Maxwellian electron current growth region"""
+        for use in fitting a bi-Maxwellian electron current growth region"""
 
         value = langmuir._fit_func_double_lin_inverse(
             self.x, self.x0, self.y0, self.T0, self.Delta_T
@@ -118,7 +118,7 @@ class Test__characteristic_errors:
 
         ab_sum = a + b
 
-        errStr = f"Addition of characteristic objects is not behaving as it " f"should."
+        errStr = "Addition of characteristic objects is not behaving as it should."
         assert (a.current + b.current == ab_sum.current).all(), errStr
 
     def test_subtraction(self):
@@ -129,22 +129,20 @@ class Test__characteristic_errors:
 
         ab_sub = a - b
 
-        errStr = (
-            f"Subtraction of characteristic objects is not behaving as " f"it should."
-        )
+        errStr = "Subtraction of characteristic objects is not behaving as it should."
         assert (a.current - b.current == ab_sub.current).all(), errStr
 
 
 @pytest.fixture
 def characteristic():
-    r""""Create a dummy characteristic with random values"""
+    r"""Create a dummy characteristic with random values"""
 
     return langmuir.Characteristic(bias_arr, current_arr)
 
 
 @pytest.fixture
 def characteristic_simulated():
-    r""""Create a simulated probe characteristic (provisional)"""
+    r"""Create a simulated probe characteristic (provisional)"""
 
     T_e_sim = 1 * u.eV
     n_e_sim = 1e18 * u.m ** -3
@@ -174,7 +172,7 @@ def characteristic_simulated():
 
 
 def shuffle_characteristic(characteristic):
-    r""""Shuffle a given characteristic"""
+    r"""Shuffle a given characteristic"""
 
     _shuffle = sorted(
         np.arange(len(characteristic.bias)), key=lambda k: np.random.random()
@@ -295,7 +293,7 @@ class Test__swept_probe_analysis:
             bimaxwellian=bimaxwellian,
         )
 
-        errStr = f"Analysis should be invariant to the ordering of the " f"input data."
+        errStr = "Analysis should be invariant to the ordering of the input data."
         for key in sim_result:
             assert (sim_result[key] == sim_result_shuffled[key]).all(), errStr
 

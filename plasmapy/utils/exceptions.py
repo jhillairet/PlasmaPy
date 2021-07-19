@@ -1,20 +1,23 @@
 """Exceptions and warnings specific to PlasmaPy."""
+
 __all__ = [
     "PlasmaPyError",
     "PhysicsError",
+    "InvalidRomanNumeralError",
+    "OutOfRangeError",
     "RelativityError",
+    "RomanError",
     "PlasmaPyWarning",
     "CouplingWarning",
-    "ImplicitUnitConversionWarning",
     "PhysicsWarning",
+    "PlasmaPyDeprecationWarning",
+    "PlasmaPyFutureWarning",
     "RelativityWarning",
 ]
 
-from astropy.units import UnitsWarning
-
-# ----------
-# Exceptions
-# ----------
+# ------------------------------------------------------------------------------
+#   Exceptions
+# ------------------------------------------------------------------------------
 
 
 class PlasmaPyError(Exception):
@@ -36,6 +39,15 @@ class PhysicsError(PlasmaPyError, ValueError):
     pass
 
 
+class RomanError(PlasmaPyError):
+    """A base exception for errors from `plasmapy.utils.roman`."""
+
+    pass
+
+
+# ^^^^^^^^^^^^ Base Exceptions should be defined above this comment ^^^^^^^^^^^^
+
+
 class RelativityError(PhysicsError):
     """
     An exception for speeds greater than the speed of light.
@@ -44,9 +56,27 @@ class RelativityError(PhysicsError):
     pass
 
 
-# ----------
-# Warnings:
-# ----------
+class OutOfRangeError(RomanError):
+    """
+    An exception to be raised for integers that outside of the range
+    that can be converted to Roman numerals.
+    """
+
+    pass
+
+
+class InvalidRomanNumeralError(RomanError):
+    """
+    An exception to be raised when the input is not a valid Roman
+    numeral.
+    """
+
+    pass
+
+
+# ------------------------------------------------------------------------------
+#   Warnings
+# ------------------------------------------------------------------------------
 
 
 class PlasmaPyWarning(Warning):
@@ -56,9 +86,8 @@ class PlasmaPyWarning(Warning):
     All PlasmaPy custom warnings should inherit from this class and be
     defined in this module.
 
-    Warnings should be issued using `~warnings.warn`, which will not break
+    Warnings should be issued using `warnings.warn`, which will not break
     execution if unhandled.
-
     """
 
     pass
@@ -68,6 +97,9 @@ class PhysicsWarning(PlasmaPyWarning):
     """The base warning for warnings related to non-physical situations."""
 
     pass
+
+
+# ^^^^^^^^^^^^^ Base Warnings should be defined above this comment ^^^^^^^^^^^^^
 
 
 class RelativityWarning(PhysicsWarning):
@@ -81,13 +113,26 @@ class RelativityWarning(PhysicsWarning):
 
 class CouplingWarning(PhysicsWarning):
     """
-    A warning for functions that rely on a particular coupling regime to be valid.
+    A warning for functions that rely on a particular coupling regime to
+    be valid.
     """
 
+    pass
 
-class ImplicitUnitConversionWarning(PlasmaPyWarning, UnitsWarning):
+
+class PlasmaPyDeprecationWarning(PlasmaPyWarning, DeprecationWarning):
     """
-    A warning for an implicit conversion between equivalent :mod:`astropy` units.
+    A warning for deprecated features when the warning is intended for
+    other Python developers.
+    """
+
+    pass
+
+
+class PlasmaPyFutureWarning(PlasmaPyWarning, FutureWarning):
+    """
+    A warning for deprecated features when the warning is intended for
+    end users of PlasmaPy.
     """
 
     pass

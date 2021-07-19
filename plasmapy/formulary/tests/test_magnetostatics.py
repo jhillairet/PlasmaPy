@@ -1,5 +1,6 @@
 import numpy as np
 import pytest
+
 from astropy import constants
 from astropy import units as u
 
@@ -99,7 +100,7 @@ class Test_FiniteStraightWire:
         self.current = 1 * u.A
 
     def test_same_point(self):
-        "Test that `FintiteStraightWire` raises `ValueError` if p1 == p2 "
+        "Test that `FintiteStraightWire` raises `ValueError` if p1 == p2"
         with pytest.raises(ValueError):
             FiniteStraightWire(self.p1, self.p1, self.current)
 
