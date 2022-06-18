@@ -13,8 +13,8 @@ __all__ = [
 from numbers import Integral
 from typing import Optional
 
-from .decorators import particle_input
-from .particle_class import Particle
+from plasmapy.particles.decorators import particle_input
+from plasmapy.particles.particle_class import Particle
 
 # The @particle_input decorator takes the inputs for a function or
 # method and passes through the corresponding instance of the Particle
@@ -127,7 +127,7 @@ def isotope_symbol(isotope: Particle, mass_numb: Optional[Integral] = None) -> s
         or contradictory information is provided.
 
     `TypeError`
-        If the argument is not a `str`, `int`, or `Particle`.
+        If the argument is not a `str`, `int`, or |Particle|.
 
     Warns
     -----
@@ -192,7 +192,7 @@ def ionic_symbol(
         contradictory information is provided.
 
     `TypeError`
-        If `particle` is not a `str`, `int`, or
+        If ``particle`` is not a `str`, `int`, or
         `~plasmapy.particles.particle_class.Particle`; or if either of
         ``mass_numb`` or ``Z`` is not an `int` or `str` representing an
         integer.

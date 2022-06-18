@@ -12,7 +12,7 @@ and highlights the importance of software as a vital research product.
 Version 0.6.0 of PlasmaPy may be cited with the following reference:
 
    PlasmaPy Community et al. (2021). *PlasmaPy*, version 0.6.0, Zenodo,
-   http://doi.org/10.5281/zenodo.4602818
+   https://doi.org/10.5281/zenodo.4602818
 
 This reference may be made, for example, by adding the following line
 to the methods or acknowledgements section of a paper.
@@ -32,5 +32,7 @@ on `Zenodo <https://zenodo.org>`__.
 We encourage authors to acknowledge the packages that PlasmaPy
 depends on, including but not limited to
 `Astropy <https://www.astropy.org/acknowledging.html>`__,
-`NumPy <https://www.scipy.org/citing.html#numpy>`__, and
-`SciPy <https://www.scipy.org/citing.html#scipy-the-library>`__.
+`NumPy <https://numpy.org/citing-numpy>`__, and
+`SciPy <https://scipy.org/citing-scipy>`__.
+
+Note that a development version of PlasmaPy should NOT be cited or used in published work.
